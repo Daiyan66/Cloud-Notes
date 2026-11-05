@@ -16,7 +16,9 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="container nav-container">
         <Link to="/" className="nav-brand">
-          <BookOpen size={24} />
+          <div className="brand-icon">
+            <BookOpen size={20} />
+          </div>
           <span>CloudNotes Hub</span>
         </Link>
 
@@ -26,21 +28,21 @@ export default function Navbar() {
 
           {user ? (
             <>
-              <Link to="/upload-note" className="btn btn-outline" style={{ padding: '0.4rem 0.8rem' }}>
-                <Upload size={16} /> Upload Notes
+              <Link to="/upload-note" className="btn btn-outline" style={{ padding: '0.45rem 0.85rem', fontSize: '0.85rem' }}>
+                <Upload size={15} /> Upload Notes
               </Link>
-              <Link to="/upload-paper" className="btn btn-outline" style={{ padding: '0.4rem 0.8rem' }}>
-                <FileText size={16} /> Upload Papers
+              <Link to="/upload-paper" className="btn btn-outline" style={{ padding: '0.45rem 0.85rem', fontSize: '0.85rem' }}>
+                <FileText size={15} /> Upload Papers
               </Link>
-              <Link to="/dashboard" className="nav-item" title="Dashboard">
-                <UserIcon size={18} style={{ verticalAlign: 'middle' }} /> {user.name.split(' ')[0]}
+              <Link to="/dashboard" className="nav-item" style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }} title="Dashboard">
+                <UserIcon size={17} /> {user.name.split(' ')[0]}
               </Link>
               {isAdmin && (
-                <Link to="/admin" className="nav-item" title="Admin Console" style={{ color: '#dc2626' }}>
-                  <Shield size={18} style={{ verticalAlign: 'middle' }} /> Admin
+                <Link to="/admin" className="nav-item" title="Admin Console" style={{ color: '#dc2626', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  <Shield size={17} /> Admin
                 </Link>
               )}
-              <button onClick={handleLogout} className="btn btn-outline" title="Log out">
+              <button onClick={handleLogout} className="btn btn-outline" title="Log out" style={{ padding: '0.45rem' }}>
                 <LogOut size={16} />
               </button>
             </>
