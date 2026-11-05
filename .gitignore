@@ -1,0 +1,19 @@
+# Local course materials and datasets
+Notes Data/
+
+# Backend build and runtime uploads
+**/target/
+Cloud-Notes-Backend/uploads/
+*.class
+
+# Frontend dependencies and build output
+**/node_modules/
+**/dist/
+**/build/
+
+# IDE and OS files
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db
