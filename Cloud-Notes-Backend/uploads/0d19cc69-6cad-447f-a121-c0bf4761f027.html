@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Box Model</title>
+
+    <style>
+        .box {
+            background: lightyellow;
+            padding: 20px;
+            margin: 30px;
+            border: 4px solid orange;
+            width: 300px;
+        }
+
+        img {
+            width: 150px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>CSS Box Model Example</h2>
+
+    <div class="box">
+        This is a box using margin, padding, and border.
+
+        <br><br>
+        <img src="wallpaper.jpg" alt="Sample">
+
+        <br><br>
+        <a href="https://www.google.com/">Visit Example</a>
+    </div>
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <ol>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    <style>
+        
+        ul li {
+            padding-left: 25px;
+            margin: 8px 0;
+            color: #2563eb;
+        }
+        
+        ul li:before {
+            content: "★ ";
+            color: #dc2626;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        
+        ol li {
+            counter-increment: item;
+            padding-left: 30px;
+            margin: 8px 0;
+            color: #7c3aed;
+        }
+        
+    </style>
+    </ol>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+Digital Library Management System (DLMS) project. This document covers the project's overview, goals, technology stack, user roles, authentication logic, book management, email integration, notifications, folder structures, and future improvements.
+
+📄 Digital Library Management System (DLMS) - Project Documentation
+
+1. Project Overview
+
+The Digital Library Management System (DLMS) is a web-based application designed to facilitate the management and distribution of digital books. It provides a platform for members to access and download e-books, staff to manage book uploads, and administrators to oversee the system's operations.
+
+2. Goals
+
+Provide easy access to digital content for authenticated members.
+
+Implement role-based workflows and dashboards.
+
+Track usage and downloads effectively.
+
+Ensure a secure and professional-grade authentication model.
+
+3. Technology Stack
+
+
+Layer	Technology
+Frontend	React.js
+Backend	Spring Boot (Java)
+Database	MySQL
+Email Service	JavaMail with Gmail SMTP
+Authentication	Custom logic with optional Spring Security
+Data Exchange	RESTful APIs (JSON)
+4. User Roles & Functions
+
+Member: Sign up, log in, browse and download books.
+
+Staff: Submit join requests, upload and manage books upon approval.
+
+Admin: Approve staff requests, manage staff, and monitor system usage.
+
+5. Authentication Logic
+
+Member: Signs up with an email, receives a 6-digit PIN via email, and logs in using the email and PIN.
+
+Staff: Submits a join request, awaits admin approval, receives a PIN upon approval, and logs in.
+
+Admin: Logs in with predefined credentials to manage the system.
+
+6. Book Management
+
+Upload: Staff can upload books with details like title, author, description, genre, ISBN, publisher, cover image, and PDF.
+
+Download: Members can download books, and each download is logged with relevant details.
+
+7. Email Integration
+
+Configured via spring.mail.* in application.properties, the system uses JavaMailSender to send:
+
+Member PINs upon signup.
+
+Staff PINs upon admin approval.
+
+8. Notifications
+
+The frontend utilizes notification libraries (e.g., react-toastify) to inform users about:
+
+Login and logout events.
+
+Book downloads and uploads.
+
+Request submissions and approvals.
+
+9. Folder Structure
+
+Backend (com.library package):
+
+rust
+Copy
+Edit
+com.library
+├── controller        // REST endpoints
+├── model             // JPA entity classes
+├── repository        // Data access interfaces
+├── service           // Business logic interfaces
+│   └── impl          // Implementations
+├── util              // Email utility and helpers
+└── LibraryManagementApplication.java
+Frontend (src directory):
+
+pgsql
+Copy
+Edit
+src/
+├── components/
+│   ├── Login.js
+│   ├── MemberSignup.js
+│   ├── StaffJoin.js
+│   ├── BookList.js
+│   ├── AdminDashboard.js
+│   └── Navbar.js
+├── App.js
+├── api/
+│   └── axiosConfig.js
+└── styles/
+    └── global.css
+10. Future Improvements
+
+Implement role-based route protection using React and Spring Security.
+
+Store files in Amazon S3 or the filesystem instead of the database.
+
+Introduce token-based authentication (e.g., JWT).
+
+Develop an analytics dashboard for admins.
+
+Add pagination and filters for books.

@@ -1,0 +1,54 @@
+Create cursor for Employee table and extract the values from the table. Declare
+the variables, Open the cursor, and extract the values from the cursor. Close the
+cursor.
+Employee (E_id, E_name, Age, Salary)
+
+
+
+
+DELIMITER $$
+
+CREATE PROCEDURE FetchEmployees()
+BEGIN
+    -- Declare variables to hold data from cursor
+    DECLARE v_E_id INT;
+    DECLARE v_E_name VARCHAR(100);
+    DECLARE v_Age INT;
+    DECLARE v_Salary DECIMAL(10,2);
+
+    -- Cursor control variable
+    DECLARE done INT DEFAULT 0;
+
+    -- Declare the cursor
+    DECLARE emp_cursor CURSOR FOR
+        SELECT E_id, E_name, Age, Salary FROM Employee;
+
+    -- Declare the continue handler for NOT FOUND
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+
+    -- Open the cursor
+    OPEN emp_cursor;
+
+    -- Start loop
+    read_loop: LOOP
+        FETCH emp_cursor INTO v_E_id, v_E_name, v_Age, v_Salary;
+
+        -- Exit loop when no more rows
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        -- Do something with the data (print using SELECT)
+        SELECT CONCAT('ID: ', v_E_id, ', Name: ', v_E_name, 
+                      ', Age: ', v_Age, ', Salary: ', v_Salary) AS Employee_Info;
+
+    END LOOP;
+
+    -- Close the cursor
+    CLOSE emp_cursor;
+END$$
+
+DELIMITER ;
+
+
+CALL FetchEmployees();

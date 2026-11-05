@@ -1,0 +1,105 @@
+9. Design and implement C/C++ Program to find shortest paths from a given vertex in a weighted connected graph to other vertices using Dijkstra's algorithm.
+
+#include <stdio.h>
+
+#define MAX 10
+#define INF 999
+
+void dijkstra(int graph[MAX][MAX], int n, int start) {
+    int distance[MAX], visited[MAX];
+
+    for (int i = 0; i < n; i++) {
+        distance[i] = INF;
+        visited[i] = 0;
+    }
+
+    distance[start] = 0;
+
+    for (int count = 0; count < n - 1; count++) {
+        int min = INF, u;
+
+        for (int i = 0; i < n; i++) 
+            if (!visited[i] && distance[i] < min) {
+                min = distance[i];
+                u = i;
+            }
+
+        visited[u] = 1;
+
+        for (int v = 0; v < n; v++) 
+            if (!visited[v] && graph[u][v] && distance[u] + graph[u][v] < distance[v]) 
+                distance[v] = distance[u] + graph[u][v];
+    }
+
+    printf("Vertex\tDistance\n", start);
+    for (int i = 0; i < n; i++) {
+        printf("\t%d\t\t%d\n", i, distance[i]);
+    }
+}
+
+int main() {
+    int n, start;
+    int graph[MAX][MAX];
+
+    printf("Enter number of vertices : ");
+    scanf("%d", &n);
+
+    printf("Enter the adjacency matrix (0 if no edge):\n");
+    for (int i = 0; i < n; i++) 
+        for (int j = 0; j < n; j++) 
+            scanf("%d", &graph[i][j]);
+            
+    printf("Enter start vertex (0 to %d): ", n - 1);
+    scanf("%d", &start);
+
+    dijkstra(graph, n, start);
+
+    return 0;
+}
+
+====================================================================================================================================================================================
+10. Design and implement C/C++ Program for N Queen's problem using Backtracking.
+
+#include <stdio.h>
+#include <stdbool.h>
+#define N 8  
+
+bool isSafe(int board[N][N], int row, int col) {
+    for (int i = 0; i < row; i++) if (board[i][col]) return 0;
+
+    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) if (board[i][j]) return 0;
+
+    for (int i = row - 1, j = col + 1; i >= 0 && j < N; i--, j++) if (board[i][j]) return 0;
+
+    return 1;
+}
+
+bool solveNQueensUtil(int board[N][N], int row) {
+    if (row >= N) return 1;
+
+    for (int col = 0; col < N; col++) {
+        if (isSafe(board, row, col)) {
+            board[row][col] = 1;  
+
+            if (solveNQueensUtil(board, row + 1))
+                return 1;  
+
+            board[row][col] = 0;  
+        }
+    }
+    return 0;  
+}
+int main() {
+    int board[N][N] = {0};
+
+    if (solveNQueensUtil(board, 0)){
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++)
+                printf("%s ", board[i][j] ? "Q" : ".");
+            printf("\n");
+        }
+    }
+    else
+        printf("No solution exists for N = %d\n", N);
+     return 0;
+}

@@ -1,0 +1,542 @@
+Artificial Intelligence
+(BIS515B )
+Textbooks:
+1. Stuart J. Russell and Peter Norvig, Artificial
+Intelligence, 3rd Edition, Pearson, 2015
+Presented By,
+Name: Dr. Bhat Geetalaxmi Jairam
+Designation: Professor
+Department: IS&E
+College: NIE, Mysuru
+1
+Module-1
+Introduction to AI
+2
+3
+Approaches to Artificial Intelligence
+The four approaches to AI represent different perspectives or
+methodologies for developing intelligent systems.
+Humanly:
+Emulating Human Intelligence: Humanly in AI
+refers to designing systems that imitate or replicate
+human-like intelligence, behavior, and capabilities.
+Examples: Developing AI chatbots that can
+engage in conversations using natural language
+understanding, or creating robots that exhibit
+emotions and social behaviors similar to humans.
+Rationally:
+Optimizing Decision-Making: Rationally in AI
+means making decisions that are logical, optimal,
+or appropriate given the available information and
+objectives.
+Examples: Designing self-driving cars that
+navigate roads safely and efficiently by analyzing
+sensor data and making decisions to minimize
+risks and reach their destinations in the most
+effective way.
+Acting humanly: The Turing Test approach
+Acting Humanly:
+What it is: Making AI systems act or interact in ways that seem
+human-like.
+Example: Developing virtual assistants like Siri or Alexa that can
+understand natural language commands and respond in a
+conversational manner.
+The Turing Test, proposed by Alan Turing in 1950, is a benchmark
+for determining a machine's ability to exhibit human-like
+intelligence.
+In this approach to AI, known as 'Acting Humanly,' the focus is on
+creating computer systems that can interact with humans in a way
+that is indistinguishable from human interaction.
+1.Acting humanly: The Turing Test approach
+❑ The test works by having
+a human interrogator
+engage in a conversation
+with both a human and a
+computer, without
+knowing which is which.
+❑ If the interrogator cannot
+reliably determine which
+responses come from the
+computer, then the
+computer is said to have
+passed the Turing Test.
+1.Acting humanly: The Turing Test approach
+To accomplish this, the computer must possess several key capabilities: KBneeded, automated reasoning is required . Apart from that:
+1.Natural Language Processing (NLP): The ability to understand and generate
+human language naturally is crucial for effective communication.
+2.Knowledge Representation: The computer must be able to store and access
+knowledge, enabling it to answer questions and engage in meaningful dialogue.
+3.Automated Reasoning: The capacity to use stored information to draw logical
+conclusions and respond appropriately to queries.
+4.Machine Learning: Adaptability is essential for the computer to learn from
+interactions and improve its performance over time.
+5.Computer Vision: To pass the 'Total Turing Test,' the computer must be able to
+perceive objects visually, allowing it to interact with the physical world.
+6.Robotics: Additionally, the computer needs the capability to manipulate objects
+and move around physically, completing the requirements for the 'Total Turing
+Test.'
+2. Thinking Humanly: The Cognitive Modeling Approach
+Understanding human thought processes is essential for creating AI systems that can think and
+behave like humans.
+1.Methods of Understanding Human Cognition:
+1. Introspection: Attempting to grasp our own thoughts and mental processes as they
+occur.
+2. Psychological Experiments: Observing individuals in various tasks and situations to
+study how they think and make decisions.
+3. Brain Imaging: Utilizing technologies such as brain imaging to observe brain activity
+during cognitive tasks, providing insights into neural mechanisms underlying
+cognition.
+2.Expressing Human Cognition as Computer Programs:
+1. Once researchers have developed a sufficiently precise theory of human cognition,
+they can translate it into computer programs.
+2. These programs attempt to replicate the cognitive processes observed in humans, such
+as problem-solving, decision-making, and language understanding.
+3.Validating Cognitive Models:
+1. Researchers compare the behavior of these AI systems with human behavior to
+validate the cognitive models.
+2. For example, pioneers like Allen Newell and Herbert Simon developed the "General
+Problem Solver" (GPS) and compared its problem-solving steps with those of human
+subjects, providing evidence for shared cognitive mechanisms.
+3. Thinking rationally: The “laws of thought” approach
+The "Laws of Thought" approach, rooted in the work of Greek philosopher
+Aristotle, seeks to formalize irrefutable reasoning processes through logic.
+Aristotle's syllogisms, such as "Socrates is a man; all men are mortal; therefore,
+Socrates is mortal," provided foundational patterns for constructing valid
+arguments. The "Laws of Thought" approach is all about using formal rules of reasoning to solve
+problems. It's like following a set of rules to reach the right answer every time, just like
+in a game with strict rules.
+Key Points:
+1.Foundation in Logic: This approach is based on using rules of logic, like those
+created by the ancient Greek philosopher Aristotle.
+2.Logic in Artificial Intelligence: People have made computer programs that can follow
+these logical rules to solve problems.
+3.Challenges: Sometimes, it's hard to turn real-life situations into these logical rules.
+Also, these programs can get stuck if they have too much to think about, like trying to
+solve a problem with too many pieces.
+4. Acting rationally: The rational agent approach
+❑ In the world of artificial intelligence, An agent is something that acts
+autonomously to achieve its goals.
+❑ A rational agent, in particular, is one that makes decisions to achieve the best
+outcome or, when faced with uncertainty, the best expected outcome.
+Example:
+Let's think about a robot in a factory. Its job is to assemble cars. To do this, it has to
+do many things:
+•Perceive its Environment: It needs to see where the car parts are and understand
+how to pick them up.
+•Operate Autonomously: It works on its own without needing someone to tell it
+what to do all the time.
+•Persist Over Time: It works for a long time without getting tired or needing
+breaks.
+•Adapt to Change: If there's a problem, like a part missing, it finds a solution to
+keep working.
+•Create and Pursue Goals: Its main goal is to assemble cars correctly and
+efficiently.
+Good Behavior: The Concept
+of Rationality
+In the realm of artificial intelligence, a
+rational agent is one that consistently
+makes the right decisions based on its
+understanding of the environment.
+But what does it mean to make the right
+decision?
+Good Behavior: The Concept of
+Rationality
+Consequences Matter:
+•A rational agent's behavior is evaluated based on the consequences of its
+actions in the environment.
+•As the agent interacts with its surroundings, it triggers a sequence of actions
+that leads to a series of environment states.
+•If this sequence of states aligns with what is considered desirable, the agent is
+deemed to have performed well.
+Example:
+•Imagine you have a robot vacuum cleaner. Its job is to keep your house clean.
+•If the robot moves around and cleans up all the dirt, leaving your floors
+spotless, that's good behavior.
+•But if it just pushes dirt around or ignores some areas, that's not so great.
+Good Behavior: The Concept of
+Rationality
+Performance Measure:
+•Desirability is measured through a performance measure, which evaluates the
+sequence of environment states generated by the agent's actions.
+•Importantly, the evaluation is based on the environment states, not the agent's own
+perception of its performance.
+•This ensures that the agent cannot simply deceive itself into thinking it has performed
+well when it hasn't.
+Example:
+•To know if the robot is doing a good job, we use something called a performance
+measure.
+•This measure looks at what the robot does and how it affects your house.
+•For example, if the robot picks up a lot of dirt and keeps your floors clean, it gets a
+high score. If it doesn't, its score goes down.
+Good Behavior: The Concept of
+Rationality
+Designing Performance Measures:
+•Designing an appropriate performance measure is crucial and often challenging.
+•It's essential to align the measure with the desired outcomes in the environment.
+•A more suitable measure might reward the agent for maintaining a clean floor over
+time, considering factors like electricity consumption and noise generation.
+Example:
+•It's not always easy to decide what makes a good score for the robot.
+•One way could be to count how much dirt it collects in a day. But then, it might
+just pick up dirt and drop it again to get a high score.
+•So, maybe it's better to give the robot points for keeping the floor clean over time,
+while also considering things like how much energy it uses.
+Good Behavior: The Concept of
+Rationality
+Complex Considerations:
+•Even with carefully designed measures, there are complex considerations to
+address.
+•For instance, the definition of a "clean floor" may vary and could be based on
+average cleanliness over time.
+•Different agents may achieve the same average cleanliness in different ways,
+leading to philosophical questions about the nature of success and preference.
+Example:
+•Even when we think we've got the perfect measure, there are still tricky things to
+think about.
+•For instance, what if the robot keeps the floor clean most of the time, but
+sometimes takes long breaks? Is that better or worse?
+•These are the kinds of questions we have to think about when designing robots
+and other smart systems.
+Good Behavior: The Concept of
+Rationality
+Conclusion:
+•Designing rational agents involves not only defining
+appropriate actions but also crafting performance measures that
+incentivize desirable behavior.
+•It's an ongoing challenge that requires careful consideration of
+the environment and the goals of the agent's actions.
+Rationality
+Understanding Rationality:
+In the realm of artificial intelligence, rationality refers to the ability of an
+agent to make decisions that are expected to achieve its goals or objectives
+effectively. Essentially, it's about doing the right thing given the available
+information and resources.
+Rationality in artificial intelligence depends on four key factors:
+1.Performance Measure: This defines the criterion of success for the
+agent.
+2.Prior Knowledge: The agent's understanding of the environment before
+taking any action.
+3.Available Actions: The actions that the agent can perform in its
+environment.
+4.Percept Sequence: The agent's history of sensory inputs up to the
+present moment.
+Applying the concept of
+rationality to the vacuum cleaner
+agent
+Performance Measure:
+In the case of the vacuum cleaner agent, the performance measure could be
+defined as the total number of clean squares over a certain period of time.
+For example, the agent earns one point for each clean square at each time
+step. The objective is to maximize the number of clean squares to achieve a
+high score.
+Prior Knowledge:
+Before the vacuum cleaner starts operating, it may have some prior
+knowledge about the environment. This includes knowing the layout of the
+space it needs to clean (such as the arrangement of squares A and B),
+understanding its own capabilities and limitations, and being aware of the
+actions it can take.
+Applying the concept of
+rationality to the vacuum cleaner
+agent
+Available Actions:
+The vacuum cleaner agent has a limited set of actions it can perform:
+moving left, moving right, or sucking up dirt. These actions are determined
+by the agent's programming and are based on its understanding of the
+environment.
+Percept Sequence:
+As the vacuum cleaner moves around the environment, it continuously
+perceives its current location and whether that location contains dirt. This
+sequence of sensory inputs forms the percept sequence, which informs
+the agent's decision-making process.
+Rationality and Adaptability
+Rationality of the Vacuum Cleaner Agent:
+Under these circumstances, the vacuum cleaner agent is rational. Its
+expected performance is as high as or higher than any other agent's in the
+same environment.
+Adaptability of Rationality:
+However, the same agent may be irrational under different conditions.
+For instance, if all dirt is cleaned, the agent may oscillate needlessly,
+resulting in poor performance. In such cases, a better agent would adjust
+its actions based on the current environment and performance measure.
+For instance, if it perceives that all squares are clean, it may stop moving
+and remain idle until new dirt appears.
+THE NATURE OF
+ENVIRONMENTS
+❑ In AI, we're diving into the world of rational agents, which are essentially
+problem solvers.
+❑ Task environments, which are essentially the “problems” to which
+rational agents are the “solutions.”
+❑ These environments essentially define the problems the agents will solve.
+❑ The design of intelligent agents process involves specifying the task
+environment, which includes identifying the performance measure, the
+environment itself, and the agent's actuators and sensors.
+❑ This description is often abbreviated as PEAS, standing for
+Performance, Environment, Actuators, and Sensors.
+Understanding PEAS
+Description
+PEAS is like a blueprint for designing intelligent agents. Let's break it down
+using the example of an automated taxi driver:
+Performance
+•Definition: This describes what success looks like for the agent. It's like
+setting the goals or objectives.
+•Example: For our automated taxi driver, the performance measure includes
+objectives like reaching the destination safely, minimizing fuel consumption,
+obeying traffic laws, and maximizing profits.
+Environment
+•Definition: This encompasses everything the agent interacts with or
+perceives.
+•Example: The taxi's environment includes roads, traffic, pedestrians, and
+passengers. It's the world the taxi operates in.
+Understanding PEAS
+Description
+Actuators
+•Definition: Actuators are the tools or mechanisms the agent uses to
+influence the environment.
+•Example: For our taxi driver, actuators include the steering wheel,
+accelerator, brakes, turn signals, and communication devices like a horn or
+display screen.
+Sensors
+•Definition: Sensors gather information from the environment, allowing the
+agent to perceive and understand its surroundings.
+•Example: The taxi's sensors include cameras for vision, sonar or radar for
+detecting other vehicles, GPS for navigation, speedometer, and various
+engine sensors to monitor the vehicle's condition.
+Bringing it All Together: Automated Taxi
+Driver Example
+•Performance: The taxi aims for safe, fast, and legal trips while maximizing
+passenger comfort and profits.
+•Environment: It operates on roads with other vehicles, pedestrians, and
+potential passengers.
+•Actuators: The taxi controls its movement using steering, acceleration,
+braking, and communicates with passengers through displays or voice.
+•Sensors: It perceives its surroundings through cameras, sonar, GPS, and
+various vehicle sensors.
+By defining the PEAS description, we provide a clear understanding of the
+agent's objectives, its operating environment, the tools it has to interact with the
+world, and the information it gathers to make decisions. This framework helps
+in designing effective and efficient intelligent agents for various tasks and
+environments.
+Bringing it All Together: Automated Taxi
+Driver Example
+Foundations of AI
+• Prerequisites of AI-what r knowledge acquired
+to learn AI.
+Foundations of AI
+• How philosophy is imp to learn AI?
+Foundations of AI
+• How mathematics & statistics r imp to learn AI? (AI as known
+as Agent programming)
+Foundations of AI
+• How economic imp to learn AI?
+Foundations of AI
+• How Neuroscience imp to learn AI?
+Foundations of AI
+• How Neuroscience imp to learn AI?
+• Nucleus surrounded by cell body
+•Dentroiid- branches of neuron
+•Synopsi- used to connect two neuron
+•Axon-used to pass information from one to
+another
+Foundations of AI
+• How pscycology/congnitive science imp to learn AI?
+Foundations of AI
+• How computer science & engineering imp to learn AI?
+Foundations of AI
+• How computer science & engineering imp to learn AI?
+Foundations of AI
+• How control theory imp to learn AI?
+Foundations of AI
+• How control theory imp to learn AI?
+Foundations of AI
+• How linguistic imp to learn AI?
+38
+39
+Intelligent Agents
+Agents
+Agents
+• How control theory imp to learn AI?
+Agents
+• Agents – should have sensors (to sense) and actuators (to act)
+Agents
+• Agents – should have sensors (to sense) and actuators (to act)
+Agents
+• E.g. of agent who is vaccum cleaner
+Agents and Environments-A
+vacuum-cleaner world
+Vacuum-Cleaner World
+Example:
+1. Simple world with two
+locations (squares A
+and B) and dirt.
+2. Vacuum agent
+perceives its location
+and dirt presence,
+chooses actions
+accordingly.
+3. Example Agent
+Function: If square is
+dirty, suck; else, move
+to the other square.
+4. Agent Program
+implements this
+function.
+Agents and Environments-A
+vacuum-cleaner world
+function REFLEX-VACUUMAGENT([location,status]) returns an action
+if status = Dirty then return Suck
+else if location = A then return Right
+else if location = B then return Left
+This function represents the abstract
+description of the agent's behavior, mapping
+percepts (location and status) to actions,
+making it an agent function.
+Given the initial situation where both squares A and B are dirty and the vacuum
+cleaner is initially located at square A
+Agents and Environments- The simple reflex agent
+function REFLEX-VACUUMAGENT([location,status]) returns an action
+if status = Dirty then return Suck
+else if location = A then return Right
+else if location = B then return Left
+1.Initial State: The agent perceives [A, Clean].
+1. Action: The agent moves Right to
+square B.
+2.Percept Sequence: [B, Clean]
+1. Action: According to the agent
+function, since B is clean, it should
+move Left to square A.
+3.Percept Sequence: [A, Clean]
+1. Action: As per the agent function,
+since A is clean, it should move Right
+to square B.
+4.The agent gets caught in a loop, continually
+moving back and forth between squares A and
+B since both are clean.
+Limitation: The simple reflex agent lacks
+memory of its previous actions or the state
+of the environment beyond the current
+percept. Therefore, it gets stuck in a loop
+when both squares are clean, inefficiently
+moving left and right without achieving any
+meaningful outcome.
+Type of Agents
+Simple Reflex agent:
+► The Simple reflex agents are the simplest agents. These
+agents take decisions on the basis of the current percepts
+and ignore the rest of the percept history.
+► These agents only succeed in the fully observable
+environment.
+► The Simple reflex agent does not consider any part of
+percepts history during their decision and action process.
+► The Simple reflex agent works on Condition-action rule,
+which means it maps the current state to action. Such as a
+Room Cleaner agent, it works only if there is dirt in the
+room.
+► Problems for the simple reflex agent design approach:
+► They have very limited intelligence
+► They do not have knowledge of non-perceptual parts
+of the current state
+► Mostly too big to generate and to store.
+► Not adaptive to changes in the environment.
+SIMPLE REFLEX AGENT PROGRAM
+Suedo code
+SIMPLE REFLEX AGENT PROGRAM
+Suedo code
+Model-Based Reflex Agent
+Drawbacks of SRA- in vacuum cleaner example
+MODEL-BASED REFLEX AGENT
+PROGRAM
+A Model-Based Reflex Agent is an enhanced version of a simple reflex
+agent. It maintains an internal state that reflects some unobservable aspects of
+the current world state. This internal state is updated based on percepts and a
+model of how the world changes. The term "model-based" comes from the fact
+that the agent uses a model of the world to make decisions.
+Key Components
+1.Internal State: Keeps track of information that cannot be directly observed
+but is necessary for making informed decisions.
+2.World Model: Represents how the world works and how the agent's actions
+affect the world.
+Why is it Called a Model-Based Reflex Agent?
+It is called "model-based" because the agent uses an internal model to
+keep track of the world state, unlike a simple reflex agent, which only
+relies on the current percepts. The model helps the agent understand and
+predict the effects of its actions.
+Model-based reflex agent
+► The Model-based agent can work in a partially
+observable environment, and track the
+situation.
+► A model-based agent has two important
+factors:
+► Model: It is knowledge about "how things
+happen in the world," so it is called a
+Model-based agent.
+► Internal State: It is a representation of
+the current state based on percept history.
+► These agents have the model, "which is
+knowledge of the world" and based on the
+model they perform actions.
+► Updating the agent state requires information
+about:
+► How the world evolves
+► How the agent's action affects the world.
+Model-Based Reflex Agent
+Drawbacks of SRA- in vacuum cleaner example
+GOAL-BASED AGENT PROGRAM
+Goal-based agents
+► The knowledge of the current state
+environment is not always sufficient to
+decide for an agent to what to do.
+► The agent needs to know its goal which
+describes desirable situations.
+► Goal-based agents expand the
+capabilities of the model-based agent by
+having the "goal" information.
+► They choose an action, so that they can
+achieve the goal.
+► These agents may have to consider a long
+sequence of possible actions before
+deciding whether the goal is achieved or
+not. Such considerations of different
+scenario are called searching and
+planning, which makes an agent
+proactive.
+UTILITY-BASED AGENT PROGRAM
+Situation where :
+Utility-based agents
+► These agents are similar to the goalbased agent but provide an extra
+component of utility measurement
+which makes them different by
+providing a measure of success at a
+given state.
+► Utility-based agent act based not only
+goals but also the best way to achieve
+the goal.
+► The Utility-based agent is useful when
+there are multiple possible
+alternatives, and an agent has to
+choose in order to perform the best
+action.
+► The utility function maps each state to
+a real number to check how efficiently
+each action achieves the goals.
+UTILITY-BASED AGENT PROGRAM
+LEARNIGNG AGENT
+LEARNIGNG AGENT
+•It is having performance standardwhich is historic data, which is error
+free & correct data using this ,agent
+learn current situation.
+•Sensor – it sense current state of the
+environment-given to critic .
+•This current state is compared with
+performance standard by critic. Critic
+evaluate action and give f/b to
+learning element.
+•LE- use this f/b and it will accept
+performance Element knowledge ,
+accordingly it will do changes in
+action.
+•Like wise it will give problem goals to
+problem generator., which generates
+action and given to Performance
+element. That action will be
+performed by actuators on the
+environment.

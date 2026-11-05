@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event demo</title>
+</head>
+<body>
+    <div onmouseover="document.getElementById('p1').textContent = 'Mouse is over the box!!!'"
+        onmouseout="document.getElementById('p1').textContent = 'Mouse is out of the box!!!'"
+        style="height: 60px;border: 3px solid black;">
+        hello!!
+    </div>
+    <p id="p1">Did not go over yet!!</p>
+
+    <button onclick="document.getElementById('p2').textContent = 'The button is clicked!!'">click</button>
+    <p id="p2">Not clicked yet!!</p>
+
+    <input type="text"
+        onfocus="document.getElementById('p3').textContent = 'The i/p box is focused!!'"
+        onkeyup="document.getElementById('p4').textContent = 'the key up is: ' + this.value">
+    <p id="p3">Not focused</p>
+    <p id="p4">Type something!!!</p>
+</body>
+</html>

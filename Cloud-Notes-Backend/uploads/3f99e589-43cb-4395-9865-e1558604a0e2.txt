@@ -1,0 +1,78 @@
+Create a table called Employee & execute the following.
+Employee (EMPNO, ENAME, JOB, MANAGER_NO, SAL, COMMISSION)
+1. Create a user and grant all permissions to the user.
+2. Insert any three records in the employee table containing attributes.
+EMPNO, ENAME JOB, MANAGER_NO, SAL, COMMISSION and
+use rollback. Check the result.
+3. Add primary key constraint and not null constraint to the employee table.
+4. Insert NULL values to the employee table and verify the result.
+
+
+
+
+
+
+
+-- Step 1: Create a new user and grant privileges (run as root/admin)
+CREATE USER 'emp_user'@'localhost' IDENTIFIED BY 'emp_pass';
+GRANT ALL PRIVILEGES ON *.* TO 'emp_user'@'localhost';
+FLUSH PRIVILEGES;
+
+-- Switch to your database (replace with your DB name)
+USE your_database_name;
+
+-- Step 2: Create the employee table
+CREATE TABLE emp (
+    eno INT,
+    ename VARCHAR(100),
+    job VARCHAR(50),
+    managerno INT,
+    sal FLOAT,
+    commission DECIMAL(10,2)
+);
+
+-- Step 3: Add constraints (NOT NULL + PRIMARY KEY)
+ALTER TABLE emp
+MODIFY eno INT NOT NULL,
+MODIFY ename VARCHAR(100) NOT NULL;
+
+ALTER TABLE emp
+ADD PRIMARY KEY (eno);
+
+-- Step 4: Insert valid data
+INSERT INTO emp VALUES (422, 'nisha', 'engineer', 987, 6700.10, 580.2);
+INSERT INTO emp VALUES (423, 'arjun', 'technician', 159, 3950.30, 375.0);
+INSERT INTO emp VALUES (424, 'tara', 'clerk', 753, 3000.00, 290.0);
+INSERT INTO emp VALUES (425, 'vikas', 'analyst', 852, 6100.90, 520.3);
+INSERT INTO emp VALUES (426, 'zoya', 'manager', 963, 7450.20, 640.0);
+
+-- Step 5: Attempt to insert NULL values (will fail)
+-- These should throw errors due to NOT NULL or PRIMARY KEY violation
+-- Uncomment each line to test
+
+-- INSERT INTO emp VALUES (NULL, 'test', 'clerk', 101, 3100.00, 300.0);
+-- INSERT INTO emp VALUES (427, NULL, 'clerk', 101, 3100.00, 300.0);
+-- INSERT INTO emp VALUES (423, 'duplicate', 'clerk', 101, 3100.00, 300.0); -- Duplicate eno
+
+-- Step 6: Use Transaction, Savepoint, and Rollback
+START TRANSACTION;
+SAVEPOINT before_temp_insert;
+
+INSERT INTO emp VALUES (427, 'pooja', 'analyst', 426, 6050.80, 500.0);
+
+-- Now rollback to remove that insert
+ROLLBACK TO SAVEPOINT before_temp_insert;
+
+-- You can check: this should return 0 rows
+SELECT * FROM emp WHERE ename = 'pooja';
+
+-- Commit the transaction (finalize other changes if any)
+COMMIT;
+
+-- Step 7: Insert more valid data
+INSERT INTO emp VALUES (428, 'ananya', 'designer', 425, 4950.00, 470.0);
+INSERT INTO emp VALUES (429, 'kiran', 'engineer', 424, 6200.50, 590.2);
+INSERT INTO emp VALUES (430, 'ravi', 'developer', 426, 5800.75, 510.0);
+
+-- Done
+SELECT * FROM emp;

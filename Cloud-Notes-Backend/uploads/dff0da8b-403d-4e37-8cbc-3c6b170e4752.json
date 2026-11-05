@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "694181e2a1aa207832cebea4"
+  },
+  "name": "daiyan",
+  "age": 21,
+  "usn": 416,
+  "grade": "A"
+},
+{
+  "_id": {
+    "$oid": "694181e2a1aa207832cebea5"
+  },
+  "name": "Aafiya",
+  "age": 22,
+  "usn": 415,
+  "grade": "A"
+},
+{
+  "_id": {
+    "$oid": "694181e2a1aa207832cebea6"
+  },
+  "name": "Mariya",
+  "age": 19,
+  "usn": 417,
+  "grade": "B"
+},
+{
+  "_id": {
+    "$oid": "694181e2a1aa207832cebea7"
+  },
+  "name": "Suziya",
+  "age": 16,
+  "usn": 414,
+  "grade": "A"
+}]

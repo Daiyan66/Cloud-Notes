@@ -29,8 +29,14 @@ public class LocalStorageService implements StorageService {
             "application/pdf",
             "image/jpeg",
             "image/png",
+            "image/webp",
             "application/msword", // .doc
-            "application/vnd.openxmlformats-officedocument.wordprocessingml.document" // .docx
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx
+            "application/vnd.openxmlformats-officedocument.presentationml.presentation", // .pptx
+            "application/vnd.ms-powerpoint", // .ppt
+            "text/plain", // .txt
+            "application/zip", // .zip
+            "application/x-zip-compressed"
     );
 
     public LocalStorageService(@Value("${app.storage.local-dir:./uploads}") String uploadDir) {

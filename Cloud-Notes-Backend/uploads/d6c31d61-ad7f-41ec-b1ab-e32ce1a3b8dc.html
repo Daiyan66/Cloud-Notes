@@ -1,0 +1,45 @@
+<!-- Write a JavaScript program that demonstrates how to handle events from different HTML elements. The program should:
+1. Trigger an alert when the user clicks anywhere on the body of the page.
+2. Change the text of a button when it is clicked and display a success message below the button.
+3. Dynamically update a paragraph with the text entered in a text box as the user types.
+4. Display a password strength message (weak, medium, or strong) based on the length of the entered password, updating the message as the user types.
+5. Ensure that the program uses appropriate event handlers for each element and explains the purpose of each event handler in the program. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Button</button>
+    <p id="pbtn"></p>
+
+    <input type="text" id="inpu">
+    <p id="outpu"></p>
+
+    <input type="text" id="pass">
+    <p id="stg"></p>
+
+    <script>
+        document.body.addEventListener('click',function(){
+            alert("the body is clicked!!!");
+        })
+
+        document.getElementById('btn').onclick = (e)=>{
+            e.stopPropagation();
+            btn.textContent = "text changed!"
+            pbtn.textContent = "sucess: text xhanged!"
+        }
+
+        inpu.oninput = ()=>{outpu.textContent = inpu.value}
+
+        pass.oninput = ()=>{
+            let p = pass.value.length;
+            stg.textContent = p<4?"wesk":p<6?"medium":"strong";
+        }
+    </script>
+
+</body>
+</html>
