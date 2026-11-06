@@ -44,7 +44,7 @@ public class NoteController {
         NoteDto.Response response = noteService.createNote(currentUser, request, files);
         return ResponseEntity.ok(ApiResponse.ok("Note uploaded successfully", response));
     }
-
+    // A comment
     @GetMapping
     public ResponseEntity<ApiResponse<PageResponse<NoteDto.Response>>> getNotes(
             @RequestParam(value = "query", required = false) String query,
