@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api/api';
-import { Search, FileText, Download, Calendar, Layers, ChevronDown, ChevronUp, Folder } from 'lucide-react';
+import { useBookmarks } from '../context/BookmarksContext';
+import DocumentViewerModal from '../components/DocumentViewerModal';
+import {
+  Search,
+  Download,
+  Calendar,
+  Layers,
+  ChevronDown,
+  ChevronUp,
+  Folder,
+  Eye,
+  Bookmark
+} from 'lucide-react';
 
 export default function QuestionPapers() {
   const [papers, setPapers] = useState([]);
@@ -10,6 +22,10 @@ export default function QuestionPapers() {
   const [semester, setSemester] = useState('All');
   const [examType, setExamType] = useState('All');
   const [expandedCardId, setExpandedCardId] = useState(null);
+  const [previewFile, setPreviewFile] = useState(null);
+  const [showSavedOnly, setShowSavedOnly] = useState(false);
+
+  const { isBookmarked, toggleBookmark } = useBookmarks();
 
   const fetchPapers = async () => {
     setLoading(true);
@@ -45,11 +61,16 @@ export default function QuestionPapers() {
     setBranch('All');
     setSemester('All');
     setExamType('All');
+    setShowSavedOnly(false);
   };
 
   const toggleExpand = (id) => {
     setExpandedCardId(expandedCardId === id ? null : id);
   };
+
+  const displayedPapers = showSavedOnly
+    ? papers.filter((p) => isBookmarked(p.id, 'papers'))
+    : papers;
 
   return (
     <div className="container" style={{ padding: '2.5rem 1.5rem' }}>
@@ -58,7 +79,7 @@ export default function QuestionPapers() {
           Examination Archives
         </h1>
         <p style={{ color: 'var(--text-muted)', fontSize: '1rem' }}>
-          Discover verified mid-term, end-semester, and supplementary question papers with official schemes.
+          Access, study, and preview past midterm, semester-end, and supplementary question papers.
         </p>
       </div>
 
@@ -67,7 +88,7 @@ export default function QuestionPapers() {
           <input
             type="text"
             className="form-control"
-            placeholder="Search papers by subject, title, or exam..."
+            placeholder="Search papers by subject, year or title..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -86,7 +107,7 @@ export default function QuestionPapers() {
         <div className="filter-item">
           <select className="form-control" value={semester} onChange={(e) => setSemester(e.target.value)}>
             <option value="All">All Semesters</option>
-            {[1,2,3,4,5,6,7,8].map((s) => (
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
               <option key={s} value={s}>Semester {s}</option>
             ))}
           </select>
@@ -101,7 +122,17 @@ export default function QuestionPapers() {
             <option value="OTHER">Other</option>
           </select>
         </div>
-        <div style={{ display: 'flex', gap: '0.6rem' }}>
+        <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+          <button
+            type="button"
+            onClick={() => setShowSavedOnly(!showSavedOnly)}
+            className={`btn ${showSavedOnly ? 'btn-primary' : 'btn-outline'}`}
+            title="Filter saved papers"
+            style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+          >
+            <Bookmark size={15} fill={showSavedOnly ? 'currentColor' : 'none'} />
+            Saved
+          </button>
           <button type="submit" className="btn btn-primary">
             <Search size={16} /> Search
           </button>
@@ -114,33 +145,59 @@ export default function QuestionPapers() {
       {loading ? (
         <div style={{ textAlign: 'center', padding: '4rem 0' }}>
           <div style={{ display: 'inline-block', width: '32px', height: '32px', border: '3px solid var(--border)', borderTopColor: 'var(--primary)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
-          <p style={{ color: 'var(--text-muted)', marginTop: '1rem', fontWeight: 500 }}>Loading examination catalog...</p>
+          <p style={{ color: 'var(--text-muted)', marginTop: '1rem', fontWeight: 500 }}>Retrieving examination archives...</p>
         </div>
-      ) : papers.length === 0 ? (
+      ) : displayedPapers.length === 0 ? (
         <div className="card" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
-          <FileText size={52} style={{ color: 'var(--text-muted)', marginBottom: '1rem', opacity: 0.7 }} />
-          <h3 style={{ fontSize: '1.25rem' }}>No question papers match your filters</h3>
+          <Layers size={52} style={{ color: 'var(--text-muted)', marginBottom: '1rem', opacity: 0.7 }} />
+          <h3 style={{ fontSize: '1.25rem' }}>
+            {showSavedOnly ? 'No saved question papers' : 'No question papers found'}
+          </h3>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem', maxWidth: '420px', margin: '0.5rem auto 0' }}>
-            Try resetting branch or semester filters, or contribute by uploading the first exam paper!
+            {showSavedOnly
+              ? 'Click the bookmark icon on any paper card to save it for quick revision.'
+              : 'Try selecting a different branch, semester, or search query.'}
           </p>
+          {showSavedOnly && (
+            <button onClick={() => setShowSavedOnly(false)} className="btn btn-outline" style={{ marginTop: '1.25rem' }}>
+              View All Papers
+            </button>
+          )}
         </div>
       ) : (
         <div className="grid">
-          {papers.map((paper) => {
+          {displayedPapers.map((paper) => {
             const isExpanded = expandedCardId === paper.id;
             const files = paper.files || [];
             const hasMultipleFiles = files.length > 1;
+            const saved = isBookmarked(paper.id, 'papers');
 
             return (
               <div key={paper.id} className="card" style={{ display: 'flex', flexDirection: 'column' }}>
-                {/* Header tags */}
+                {/* Header tags & Bookmark */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
-                  <span className="badge badge-amber">
-                    {paper.examType.replace('_', ' ')}
-                  </span>
-                  <span style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--text-muted)' }}>
-                    Year {paper.year}
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span className="badge badge-amber">
+                      {paper.examType.replace('_', ' ')}
+                    </span>
+                    <span style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--text-muted)' }}>
+                      Year {paper.year}
+                    </span>
+                  </div>
+
+                  <button
+                    onClick={() => toggleBookmark(paper, 'papers')}
+                    className="btn btn-outline"
+                    style={{
+                      padding: '0.3rem 0.5rem',
+                      borderRadius: '6px',
+                      color: saved ? '#f59e0b' : 'var(--text-muted)',
+                      borderColor: saved ? 'rgba(245, 158, 11, 0.4)' : 'var(--border)'
+                    }}
+                    title={saved ? 'Remove from saved' : 'Bookmark paper'}
+                  >
+                    <Bookmark size={15} fill={saved ? '#f59e0b' : 'none'} />
+                  </button>
                 </div>
 
                 {/* Title */}
@@ -172,21 +229,31 @@ export default function QuestionPapers() {
                     </span>
 
                     {files.length === 1 ? (
-                      <a
-                        href={`http://localhost:8085${files[0].downloadUrl}`}
-                        download={files[0].originalFileName}
-                        className="btn btn-primary"
-                        style={{ padding: '0.4rem 0.85rem', fontSize: '0.825rem' }}
-                      >
-                        <Download size={14} /> Download PDF
-                      </a>
+                      <div style={{ display: 'flex', gap: '0.4rem' }}>
+                        <button
+                          onClick={() => setPreviewFile(files[0])}
+                          className="btn btn-outline"
+                          style={{ padding: '0.35rem 0.65rem', fontSize: '0.8rem' }}
+                          title="Preview paper"
+                        >
+                          <Eye size={14} /> Preview
+                        </button>
+                        <a
+                          href={`http://localhost:8085${files[0].downloadUrl}`}
+                          download={files[0].originalFileName}
+                          className="btn btn-primary"
+                          style={{ padding: '0.35rem 0.75rem', fontSize: '0.8rem' }}
+                        >
+                          <Download size={14} /> Download
+                        </a>
+                      </div>
                     ) : (
                       <button
                         onClick={() => toggleExpand(paper.id)}
                         className="btn btn-outline"
                         style={{ padding: '0.4rem 0.85rem', fontSize: '0.825rem', gap: '0.35rem' }}
                       >
-                        {isExpanded ? 'Hide Files' : 'View & Download'}
+                        {isExpanded ? 'Hide Files' : 'View & Preview'}
                         {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                       </button>
                     )}
@@ -211,14 +278,24 @@ export default function QuestionPapers() {
                           <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: '0.5rem', fontWeight: 500 }}>
                             {file.originalFileName}
                           </div>
-                          <a
-                            href={`http://localhost:8085${file.downloadUrl}`}
-                            download={file.originalFileName}
-                            className="btn btn-primary"
-                            style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem', height: '26px' }}
-                          >
-                            <Download size={12} />
-                          </a>
+                          <div style={{ display: 'flex', gap: '0.35rem' }}>
+                            <button
+                              onClick={() => setPreviewFile(file)}
+                              className="btn btn-outline"
+                              style={{ padding: '0.2rem 0.45rem', fontSize: '0.75rem', height: '26px' }}
+                              title="Preview file"
+                            >
+                              <Eye size={12} />
+                            </button>
+                            <a
+                              href={`http://localhost:8085${file.downloadUrl}`}
+                              download={file.originalFileName}
+                              className="btn btn-primary"
+                              style={{ padding: '0.2rem 0.55rem', fontSize: '0.75rem', height: '26px' }}
+                            >
+                              <Download size={12} />
+                            </a>
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -228,6 +305,14 @@ export default function QuestionPapers() {
             );
           })}
         </div>
+      )}
+
+      {/* Document Viewer Modal */}
+      {previewFile && (
+        <DocumentViewerModal
+          file={previewFile}
+          onClose={() => setPreviewFile(null)}
+        />
       )}
     </div>
   );

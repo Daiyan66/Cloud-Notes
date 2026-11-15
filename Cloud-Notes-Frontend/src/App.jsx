@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
+import { BookmarksProvider } from './context/BookmarksContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -23,58 +25,62 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-          <Navbar />
-          <main style={{ flex: 1 }}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/notes" element={<Notes />} />
-              <Route path="/notes/:id" element={<NoteDetail />} />
-              <Route path="/papers" element={<QuestionPapers />} />
+    <ThemeProvider>
+      <BookmarksProvider>
+        <AuthProvider>
+          <BrowserRouter>
+            <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+              <Navbar />
+              <main style={{ flex: 1 }}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/notes" element={<Notes />} />
+                  <Route path="/notes/:id" element={<NoteDetail />} />
+                  <Route path="/papers" element={<QuestionPapers />} />
 
-              {/* Protected Student Routes */}
-              <Route
-                path="/upload-note"
-                element={
-                  <ProtectedRoute>
-                    <UploadNote />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/upload-paper"
-                element={
-                  <ProtectedRoute>
-                    <UploadPaper />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/dashboard"
-                element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                }
-              />
+                  {/* Protected Student Routes */}
+                  <Route
+                    path="/upload-note"
+                    element={
+                      <ProtectedRoute>
+                        <UploadNote />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/upload-paper"
+                    element={
+                      <ProtectedRoute>
+                        <UploadPaper />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/dashboard"
+                    element={
+                      <ProtectedRoute>
+                        <Dashboard />
+                      </ProtectedRoute>
+                    }
+                  />
 
-              {/* Protected Admin Route */}
-              <Route
-                path="/admin"
-                element={
-                  <ProtectedRoute requireAdmin>
-                    <Admin />
-                  </ProtectedRoute>
-                }
-              />
-            </Routes>
-          </main>
-        </div>
-      </BrowserRouter>
-    </AuthProvider>
+                  {/* Protected Admin Route */}
+                  <Route
+                    path="/admin"
+                    element={
+                      <ProtectedRoute requireAdmin>
+                        <Admin />
+                      </ProtectedRoute>
+                    }
+                  />
+                </Routes>
+              </main>
+            </div>
+          </BrowserRouter>
+        </AuthProvider>
+      </BookmarksProvider>
+    </ThemeProvider>
   );
 }

@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { BookOpen, Upload, LogOut, User as UserIcon, Shield, FileText } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { useBookmarks } from '../context/BookmarksContext';
+import { BookOpen, Upload, LogOut, User as UserIcon, Shield, FileText, Sun, Moon, Bookmark } from 'lucide-react';
 
 export default function Navbar() {
   const { user, logout, isAdmin } = useAuth();
+  const { theme, toggleTheme, isDark } = useTheme();
+  const { totalBookmarks } = useBookmarks();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -25,6 +29,50 @@ export default function Navbar() {
         <div className="nav-links">
           <Link to="/notes" className="nav-item">Browse Notes</Link>
           <Link to="/papers" className="nav-item">Question Papers</Link>
+
+          {/* Bookmarks Quick Link */}
+          <Link
+            to="/dashboard?tab=saved"
+            className="nav-item"
+            style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', position: 'relative' }}
+            title="Saved Notes & Papers"
+          >
+            <Bookmark size={17} />
+            <span>Saved</span>
+            {totalBookmarks > 0 && (
+              <span
+                style={{
+                  backgroundColor: 'var(--primary)',
+                  color: 'white',
+                  borderRadius: '9999px',
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  padding: '1px 6px',
+                  lineHeight: '1.2'
+                }}
+              >
+                {totalBookmarks}
+              </span>
+            )}
+          </Link>
+
+          {/* Dark/Light Mode Switcher */}
+          <button
+            onClick={toggleTheme}
+            className="btn btn-outline"
+            style={{
+              padding: '0.45rem',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: isDark ? '#fbbf24' : '#64748b'
+            }}
+            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-label="Toggle theme"
+          >
+            {isDark ? <Sun size={17} /> : <Moon size={17} />}
+          </button>
 
           {user ? (
             <>

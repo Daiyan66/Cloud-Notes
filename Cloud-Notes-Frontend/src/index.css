@@ -331,3 +331,86 @@ button {
 .file-chip:hover {
   background: #e2e8f0;
 }
+
+/* ==========================================================================
+   Dark Theme System
+   ========================================================================== */
+[data-theme='dark'] {
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-light: rgba(59, 130, 246, 0.18);
+  --primary-glow: rgba(59, 130, 246, 0.3);
+  --secondary: #94a3b8;
+  --bg-main: #0b0f19;
+  --surface: #131b2e;
+  --surface-alt: #1a243b;
+  --border: #243049;
+  --border-focus: #3b82f6;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --danger-light: rgba(239, 68, 68, 0.15);
+  --success-light: rgba(16, 185, 129, 0.15);
+  --amber-light: rgba(245, 158, 11, 0.15);
+  --purple-light: rgba(139, 92, 246, 0.18);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.45), 0 2px 4px -2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.55), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.65), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] body {
+  background: linear-gradient(180deg, #0b0f19 0%, #0f172a 100%);
+  color: #f8fafc;
+}
+
+[data-theme='dark'] .navbar {
+  background: rgba(19, 27, 46, 0.88);
+  border-bottom: 1px solid rgba(36, 48, 73, 0.85);
+}
+
+[data-theme='dark'] .hero-title {
+  color: #f8fafc;
+}
+
+[data-theme='dark'] .btn-outline {
+  border-color: var(--border);
+  background-color: var(--surface);
+  color: var(--text-main);
+}
+
+[data-theme='dark'] .btn-outline:hover {
+  background-color: var(--surface-alt);
+  border-color: #3b82f6;
+}
+
+[data-theme='dark'] .file-chip:hover {
+  background: #243049;
+}
+
+[data-theme='dark'] .badge-amber {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
