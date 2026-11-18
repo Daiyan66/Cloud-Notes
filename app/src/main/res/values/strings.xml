@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CloudNotes Hub</string>
+    <string name="hero_badge">Academic Resource Platform &amp; AI Study Engine</string>
+    <string name="hero_title_prefix">Share, discover, and study with </string>
+    <string name="hero_subtitle">Centralized hub for university notes, syllabus materials, and previous exam question papers. Powered by on-device text extraction and AI-driven study summaries.</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_notes">Notes</string>
+    <string name="nav_papers">Papers</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_admin">Admin</string>
+</resources>

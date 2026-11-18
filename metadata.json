@@ -1,0 +1,8 @@
+{
+  "name": "CloudNotes Hub",
+  "description": "Academic resource platform for university course notes, previous exam question papers, bookmarks, and AI study summaries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
